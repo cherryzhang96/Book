@@ -1,3 +1,7 @@
+package java;
+
+import common.HttpUtil;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,10 +12,10 @@ import java.util.Map;
  * Time: 上午10:30
  * To change this template use File | Settings | File Templates.
  */
-public class testThread2 implements Runnable {
+public class testThread implements Runnable {
     @Override
     public void run() {
         Map<String, String> map = new HashMap<String, String>();
-        HttpUtil.post("http://localhost:8080/treasure/buy/snapUp?phone=12345678909&id=3",map,null);
+        HttpUtil.post("http://localhost:8080/treasure/buy/snapUp?phone=12345678901&id=3",map,null);
     }
 }

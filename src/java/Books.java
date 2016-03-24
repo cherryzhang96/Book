@@ -1,3 +1,5 @@
+package java;
+
 /**
  * Created with IntelliJ IDEA.
  * User: cherry

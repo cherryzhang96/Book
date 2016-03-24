@@ -1,23 +1,9 @@
-import brut.androlib.ApktoolProperties;
-import com.sinaapp.msdxblog.apkUtil.entity.ApkInfo;
-import com.sinaapp.msdxblog.apkUtil.utils.ApkUtil;
-import com.sun.javafx.collections.MappingChange;
-import javafx.beans.InvalidationListener;
-import javafx.collections.ObservableSet;
-import javafx.collections.SetChangeListener;
-import org.apache.commons.lang.StringUtils;
+package java;
 
 import java.io.*;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -30,8 +16,8 @@ import java.util.zip.ZipInputStream;
  */
 public class Creator {
     public static Books creator1() {
-//        return (new Book());
-//        return (new Periodical());
+//        return (new java.Book());
+//        return (new java.Periodical());
         return (new NewsPaper());
     }
 
@@ -62,9 +48,9 @@ public class Creator {
 //        System.out.println(Integer.MAX_VALUE);
 //        System.out.println(Integer.MIN_VALUE);
 
-//        List<Book> a = new ArrayList<Book>();
-//        a.add(new Book());
-//        List<NewsPaper> b = new ArrayList<NewsPaper>();
+//        List<java.Book> a = new ArrayList<java.Book>();
+//        a.add(new java.Book());
+//        List<java.NewsPaper> b = new ArrayList<java.NewsPaper>();
 //        System.out.println(a.get(0).getClass().getName());
 //        System.out.println(b.getClass());
 
@@ -241,12 +227,12 @@ public class Creator {
 //        String s = sdf.format(d);
 //        Date date = sdf.parse(s);
 //        System.out.println(d.toLocaleString());
-//        testThread testThread = new testThread();
-//        testThread.run();
+//        java.testThread java.testThread = new java.testThread();
+//        java.testThread.run();
 
 //        ScheduledExecutorService service = Executors.newScheduledThreadPool(2);
-//        service.scheduleAtFixedRate(new testThread(), 1000,15000, TimeUnit.MILLISECONDS);
-//        service.scheduleAtFixedRate(new testThread2(), 1000,15000, TimeUnit.MILLISECONDS);
+//        service.scheduleAtFixedRate(new java.testThread(), 1000,15000, TimeUnit.MILLISECONDS);
+//        service.scheduleAtFixedRate(new java.testThread2(), 1000,15000, TimeUnit.MILLISECONDS);
 
 //        Timestamp nowTime = new Timestamp(System.currentTimeMillis());
 //        System.out.print(nowTime.getTime()/1000);

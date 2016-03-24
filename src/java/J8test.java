@@ -1,3 +1,5 @@
+package java;
+
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -24,9 +26,9 @@ public class J8test {
 //        Predicate<Boolean> nonNull = Objects::nonNull;
 //        System.out.println(nonNull.test(null));
 
-//        Comparator<Person> comparator = (p1, p2) -> p1.firstName.compareTo(p2.firstName);
-//        Person p1 = new Person("cherry","chen");
-//        Person p2 = new Person("zhang","qing");
+//        Comparator<java.Person> comparator = (p1, p2) -> p1.firstName.compareTo(p2.firstName);
+//        java.Person p1 = new java.Person("cherry","chen");
+//        java.Person p2 = new java.Person("zhang","qing");
 //        System.out.println(comparator.compare(p1, p2));
     }
 
@@ -41,12 +43,12 @@ public class J8test {
 //        System.out.println("distinctPrimary result is: " + r);
 //    }
 
-//    public void boysAndGirls(List<Person> persons) {
+//    public void boysAndGirls(List<java.Person> persons) {
 //        Map<Integer, Integer> result = persons.parallelStream().filter(p -> p.getAge()>=25 && p.getAge()<=35).
 //                collect(
 //                        Collectors.groupingBy(p -> p.getSex(), Collectors.summingInt(p -> 1))
 //                );
 //        System.out.print("boysAndGirls result is " + result);
-//        System.out.println(", ratio (male : female) is " + (float)result.get(Person.MALE)/result.get(Person.FEMALE));
+//        System.out.println(", ratio (male : female) is " + (float)result.get(java.Person.MALE)/result.get(java.Person.FEMALE));
 //    }
 }
