@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        @media screen and (max-width: 300px) {
+            body {
+                background-color:lightblue;
+            }
+        }
+        #div1, #div2, #div3 {
+            width: 488px;
+            height: 500px;
+            padding: 10px;
+            border: 1px solid #aaaaaa;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            makeCanvas();
+            serversent();
+        }
+        function drag(ev) {
+            ev.dataTransfer.setData("Text", ev.target.id);
+        }
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+
+        function makeCanvas() {
+            var c = document.getElementById("myCanvas");
+            var cxt = c.getContext("2d");
+            var grd = cxt.createLinearGradient(0, 0, 175, 50);
+            grd.addColorStop(0, "#FFFF00");
+            grd.addColorStop(1, "#00FF00");
+            cxt.fillStyle = grd;
+            cxt.fillRect(0, 0, 175, 50);
+        }
+
+        var w;
+        function startWorker() {
+            if (typeof(Worker) !== "undefined") {
+                if (typeof(w) == "undefined") {
+                    w = new Worker("demo_workers.js");
+                }
+                w.onmessage = function(event) {
+                    document.getElementById("result").innerHTML = event.data;
+                }
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+            }
+        }
+        function stopWorker() {
+            w.terminate();
+        }
+
+        var source;
+        function serversent() {
+            if (typeof(EventSource) !== "undefined") {
+                if (typeof(source) == "undefined") {
+                    source = new EventSource("http://localhost:8080/push/pushContent");
+                }
+                source.onmessage = function(event) {
+                    document.getElementById("sse").innerHTML = event.data;
+                };
+            } else {
+                document.getElementById("sse").innerHTML = "Sorry, your browser does not support Server sent...";
+            }
+
+        }
+    </script>
+</head>
+<body>
+将图片拖放到框内：
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<img id="drag1" src="img/aa.JPG" draggable="true" ondragstart="drag(event)"/>
+<br>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" style="float: left">
+    将图片在两个框内拖放移动：
+    <img id="drag2" src="img/aa.JPG" draggable="true" ondragstart="drag(event)"/>
+</div>
+<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" style="float: left"></div>
+
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #c3c3c3;">
+    Your browser does not support the canvas element.
+</canvas>
+
+
+<p>计数: <output id="result"></output></p>
+<button onclick="startWorker()">开始 Worker</button>
+<button onclick="stopWorker()">停止 Worker</button>
+
+<p>接收 Server-Sent 事件通知:<output id="sse"></output></p>
+
+datalist test:<input type="url" name="link" list="urlList">
+<datalist id="urlList">
+    <option label="W3School" value="http://www.w3school.com.cn"></option>
+    <option label="Google" value="http://www.google.com" />
+    <option label="Microsoft" value="http://www.microsoft.com" />
+</datalist>
+
+选取相册或调用相机：<input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput">
+</body>
+</html>

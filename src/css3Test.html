@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*边框阴影*/
+        /*div*/
+        /*{*/
+            /*width:300px;*/
+            /*height:100px;*/
+            /*background-color:#ff9900;*/
+            /*-moz-box-shadow: 10px 10px 5px #888888; *//* 老的 Firefox */
+            /*box-shadow: 10px 10px 5px #888888;*/
+        /*}*/
+
+        /*边框圆角*/
+        /*div*/
+        /*{*/
+            /*border: 2px solid deeppink;*/
+            /*border-radius: 25px;*/
+            /*-moz-border-radius: 25px;*/
+        /*}*/
+
+        /*边框图片*/
+        /*div*/
+        /*{*/
+            /*border:15px solid transparent;*/
+            /*width:300px;*/
+            /*padding:10px 20px;*/
+            /*border-image:url(img/border.png) 30 30 round;*/
+            /*-moz-border-image:url(img/border.png) 30 30 round; *//* 老的 Firefox */
+            /*-webkit-border-image:url(img/border.png) 30 30 round; *//* Safari 和 Chrome */
+            /*-o-border-image:url(img/border.png) 30 30 round; *//* Opera */
+        /*}*/
+
+        /*背景图片*/
+        #divBac1
+        {
+            border:5px solid black;
+            padding:35px;
+            background-image:url('img/bg_flower_multi.gif');
+            background-repeat:no-repeat;
+            background-position:left;
+            background-origin:border-box;
+        }
+        #divBac2
+        {
+            border:5px solid black;
+            padding:35px;
+            background-image:url('img/bg_flower_multi.gif');
+            background-repeat:no-repeat;
+            background-position:left;
+            background-origin:content-box;
+        }
+        #divBac3
+        {
+            border:5px solid black;
+            padding:35px;
+            background-image:url('img/bg_flower_multi.gif');
+            background-repeat:no-repeat;
+            background-position:left;
+            background-origin:padding-box;
+        }
+
+        #shadow
+        {
+            color: lightblue;
+            text-shadow: 3px 3px 3px green;
+        }
+
+        #longWord
+        {
+            width:5em;
+            border:1px solid #000000;
+            word-wrap:break-word;
+        }
+
+        @font-face
+        {
+            font-family: myFont;
+            src: url('font/Sansation_Light_Italic.ttf')
+            ,url('font/Sansation_Light.eot'); /* IE9+ */
+        }
+        #specialFont
+        {
+            font-family: myFont;
+        }
+
+        #trans
+        {
+            margin:30px;
+            width:200px;
+            height:100px;
+            background-color:yellow;
+            /* Rotate div */
+            transform:rotate(30deg);
+            -ms-transform:rotate(30deg); /* Internet Explorer */
+            -moz-transform:rotate(30deg); /* Firefox */
+            -webkit-transform:rotate(30deg); /* Safari 和 Chrome */
+            -o-transform:rotate(30deg); /* Opera */
+        }
+
+        /*从样式#transHover过度到#transHover:hover*/
+        #transHover
+        {
+            width:100px;
+            height:100px;
+            background:yellow;
+            transition:width 2s,height 2s,transform 2s;
+            -moz-transition:width 2s, height 2s, -moz-transform 2s; /* Firefox 4 */
+            -webkit-transition:width 2s, height 2s, -webkit-transform 2s; /* Safari and Chrome */
+            -o-transition:width 2s, height 2s, -o-transform 2s; /* Opera */
+        }
+        #transHover:hover
+        {
+            width: 500px;
+            height: 500px;
+            transform: rotate(180deg);
+            -moz-transform:rotate(180deg); /* Firefox 4 */
+            -webkit-transform:rotate(180deg); /* Safari and Chrome */
+            -o-transform:rotate(180deg); /* Opera */
+        }
+
+        #ani
+        {
+            width:100px;
+            height:100px;
+            background:red;
+            position: relative;  /*设置relative才会位置改变动画*/
+            animation:myfirst 5s infinite alternate;
+            -moz-animation:myfirst 5s infinite alternate; /* Firefox */
+            -webkit-animation:myfirst 5s infinite alternate; /* Safari and Chrome */
+            -o-animation:myfirst 5s infinite alternate; /* Opera */
+        }
+        @keyframes myfirst {
+            0% {background:red;left: 0px;top: 0px}
+            25% {background:yellow;left: 200px;top: 0px}
+            50% {background:pink;left: 200px;top: 200px}
+            75% {background:deepskyblue;left: 0px;top: 200px}
+            100% {background: chartreuse;left: 0px;top: 0px}
+        }
+        @-moz-keyframes myfirst /* Firefox */
+        {
+            0% {background:red;left: 0px;top: 0px}
+            25% {background:yellow;left: 200px;top: 0px}
+            50% {background:pink;left: 200px;top: 200px}
+            75% {background:deepskyblue;left: 0px;top: 200px}
+            100% {background: chartreuse;left: 0px;top: 0px}
+        }
+
+        @-webkit-keyframes myfirst /* Safari and Chrome */
+        {
+            0% {background:red;left: 0px;top: 0px}
+            25% {background:yellow;left: 200px;top: 0px}
+            50% {background:pink;left: 200px;top: 200px}
+            75% {background:deepskyblue;left: 0px;top: 200px}
+            100% {background: chartreuse;left: 0px;top: 0px}
+        }
+
+        @-o-keyframes myfirst /* Opera */
+        {
+            0% {background:red;left: 0px;top: 0px}
+            25% {background:yellow;left: 200px;top: 0px}
+            50% {background:pink;left: 200px;top: 200px}
+            75% {background:deepskyblue;left: 0px;top: 200px}
+            100% {background: chartreuse;left: 0px;top: 0px}
+        }
+
+        #newspaper
+        {
+            column-count: 3;
+            -moz-column-count: 3;/* Firefox */
+            -webkit-column-count: 3;/* Safari and Chrome */
+
+            column-gap: 40px;
+            -moz-column-gap: 40px;
+            -webkit-column-gap: 40px;
+
+            -moz-column-rule:4px outset #ff0000; /* Firefox */
+            -webkit-column-rule:4px outset #ff0000; /* Safari and Chrome */
+            column-rule:4px outset #ff0000;
+        }
+
+        #resize
+        {
+            width: 100px;
+            border: deeppink 2px solid;
+            padding: 10px 20px;
+            resize: both;
+            overflow: auto;
+        }
+
+        .container
+        {
+            width:30em;
+            border:1em solid;
+        }
+        .container>.box
+        {
+            box-sizing:border-box;
+            -moz-box-sizing:border-box; /* Firefox */
+            -webkit-box-sizing:border-box; /* Safari */
+            width:50%;
+            border:1em solid red;
+            float:left;
+        }
+
+        #outline
+        {
+            margin:100px;
+            padding:10px;
+            width:150px;
+            height:70px;
+            border:2px solid black;
+            outline:2px solid red;
+            outline-offset:15px;
+        }
+        
+        [title] 
+        {
+            color: lawngreen;
+        }
+        [title=atitle]
+        {
+            color: lightcoral;
+        }
+        [title~=hello]
+        {
+            color: lightblue;
+        }
+
+        input[type="text"]
+        {
+            background-color: lightblue;
+        }
+        input[type="button"]
+        {
+            background-color: khaki;
+        }
+
+        body{
+            background-image: url("img/aa.JPG");
+            background-repeat: no-repeat;
+            background-position: 66% 33%;
+            background-attachment: fixed;
+        }
+
+        .textindent1{
+            text-indent: 2em;
+        }
+        
+        .textLine{
+            text-decoration: overline;
+        }
+
+        .white{
+            /*white-space: pre; *//*不忽略空白和换行*/
+            white-space: nowrap;/*忽略换行，除非<br>*/
+        }
+
+        .direc{
+            /*direction: ltr;*/ /*左到右*/
+            direction: rtl; /*右到左*/
+        }
+
+        a:link{
+            color: khaki;
+        }
+        a:visited{
+            color: lawngreen;
+        }
+        a:hover{
+            color: lightblue;
+        }
+        a:active{
+            color: lightcoral;
+        }
+
+        ul.disc {
+            /*list-style-type: disc*/
+            /*list-style-type: circle*/
+            /*list-style-type: square;*/
+            /*list-style-type: decimal;*/
+            /*list-style-type: lower-roman;*/
+            /*list-style-type: lower-alpha;*/
+            /*list-style-type: lower-greek;*/
+            /*list-style-type: lower-latin;*/
+            /*list-style-type: upper-alpha;*/
+            /*list-style-type: upper-latin;*/
+            list-style-type: upper-roman;
+        }
+
+        #bar{
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+        }
+        #bar li{
+            float: left;
+        }
+        #bar li a:link,a:visited
+        {
+            display:block;
+            width:120px;
+            font-weight:bold;
+            color:#FFFFFF;
+            background-color:#bebebe;
+            text-align:center;
+            padding:4px;
+            text-decoration:none;
+            text-transform:uppercase;
+        }
+        #bar li a:hover,a:active
+        {
+            background-color:#cc0000;
+        }
+
+        /* Clear Fix */
+        .clearfix:after { content:"."; display:block; height:0; clear:both; visibility:hidden;}
+        .clearfix { display:inline-block; }    /* Hide from IE Mac */
+        .clearfix {display:block;}    /* End hide from IE Mac */
+        /* end of clearfix */
+
+        /*响应式*/
+        .leftBox{
+            background-color: crimson;
+            float: left;
+            width: 20%;
+            display: inline;
+            height: 500px;
+        }
+        .middleBox{
+            background-color: cyan;
+            float: left;
+            width: 60%;
+            display: inline;
+            height: 500px;
+        }
+        .rightBox{
+            background-color: darkgoldenrod;
+            float: left;
+            width: 20%;
+            display: inline;
+            height: 500px;
+        }
+        @media screen and (max-width: 500px){
+            .leftBox{
+                background-color: crimson;
+                width: 98%;
+                height: 200px;
+            }
+            .middleBox{
+                background-color: cyan;
+                width: 98%;
+                height: 200px;
+            }
+            .rightBox{
+                background-color: darkgoldenrod;
+                width: 98%;
+                height: 200px;
+            }
+        }
+        /*响应式end*/
+    </style>
+</head>
+<body>
+<div>边框圆角、阴影、图片</div>
+
+<p>背景background-origin:border-box:</p>
+
+<div id="transHover">鼠标放上来！</div>
+
+<div id="divBac1">
+    这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+</div>
+
+<p>背景background-origin:content-box:</p>
+<div id="divBac2">
+    这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+</div>
+
+<p>背景background-origin:padding-box:</p>
+<div id="divBac3">
+    这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+</div>
+
+<h1 id="shadow">文字带阴影</h1>
+
+<p id="longWord">This paragraph contains a very long word: thisisaveryveryveryveryveryverylongword. The long word will break and wrap to the next line.</p>
+
+<div id="specialFont">特定字体的文字specialFont thisisaveryveryveryveryveryverylongword</div>
+
+<div id="trans">我可以转！</div>
+
+<div id="ani">这是动画！</div>
+
+<div id="newspaper">
+    人民网北京2月24日电 (记者 刘阳)国家发展改革委近日发出通知，决定自2月25日零时起将汽、柴油价格每吨分别提高300元和290元，折算到90号汽油和0号柴油（全国平均）每升零售价格分别提高0.22元和0.25元。
+
+    此次国内成品油价格调整幅度，是按照现行国内成品油价格形成机制，根据国际市场油价变化情况确定的。去年11月16日国内成品油价格调整以来，受市场预期欧美经济复苏前景向好以及中东局势持续动荡等因素影响，国际市场原油价格先抑后扬，2月上旬WTI和布伦特原油期货价格再次回升至每桶95美元和115美元以上。虽然近两日价格有所回落，但国内油价挂钩的国际市场三种原油连续22个工作日移动平均价格上涨幅度已超过4%，达到国内成品油价格调整的边界条件。
+
+    通知指出，这次成品油调价后，国家将按照已建立的补贴机制，继续对种粮农民、渔业（含远洋渔业）、林业、城市公交、农村道路客运（含岛际和农村水路客运）等给予补贴。同时，为保证市场物价基本稳定，防止连锁涨价，对与居民生活密切相关的铁路客运、城市公交、农村道路客运（含岛际和农村水路客运）价格不作调整。
+
+    通知要求，中石油、中石化、中海油三大公司要组织好成品油生产和调运，保持合理库存，加强综合协调和应急调度，保障成品油供应。各级价格主管部门要加大市场监督检查力度，依法查处不执行国家价格政策，以及囤积居奇、造谣惑众、合谋涨价、搭车涨价等违法行为，维护正常市场秩序。
+</div>
+
+<div id="resize">可以改变我的大小</div>
+
+<div class="container">
+    <div class="box">这个 div 占据左半部分。</div>
+    <div class="box">这个 div 占据右半部分。</div>
+</div>
+
+
+<div id="outline">这个 div 在边框边缘之外 15 像素处有一个轮廓。</div>
+
+<div title="aa">有title的样式</div>
+<div>没有title的样式</div>
+<div title="atitle">指定title的样式</div>
+<div title="atitle hello">含有部分title的样式</div>
+
+<form>
+    <input type="text">
+    <input type="button" value="button">
+</form>
+
+<div class="textindent1">把 Web 页面上的段落的第一行缩进，这是一种最常用的文本格式化效果。CSS 提供了 text-indent 属性，该属性可以方便地实现文本缩进。通过使用 text-indent 属性，所有元素的第一行都可以缩进一个给定的长度，甚至该长度可以是负值。这个属性最常见的用途是将段落的首行缩进，下面的规则会使所有段落的首行缩进 5 em：</div>
+
+<div class="textLine">拉开加放上来看交罚款是的减肥是看风景时</div>
+
+<div class="white">拉开加放        上来看交罚款是的减肥
+    是看风<br>景时</div>
+
+<div class="direc">我们都是好孩子你喜欢我嘛我不喜欢你</div>
+
+<a href="http://www.baidu.com" target="_blank"> 这是一个链接</a>
+
+<ul class="disc">
+    <li>咖啡</li>
+    <li>茶</li>
+    <li>可口可乐</li>
+</ul>
+
+<a href="http://localhost:8080/push/clickContent/1">aaaINTEGRAL</a>
+<a href="http://localhost:8080/push/clickButton?type=HOUSEKEEPER">bbbINTEGRAL</a>
+
+<ul id="bar">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
+</ul>
+
+
+<div style="clear: both;border: 1px solid #aaaaaa;min-height:200px; height:auto !important; height:200px; overflow:visible;">aaaaaaaaaaaaa</div>
+
+<div id="page">
+    <div id="bg" style="border: 5px solid black;float:left;width:100%;background-color: cornflowerblue">
+        <div id="left" style="float: left; border: 1px solid hotpink">a</div>
+        <div id="center" style="text-align: center;clear: left">b</div>
+        <div id="right" style="float: right; border: 1px solid hotpink">c</div>
+    </div>
+</div>
+
+<!--IE6中要上下加两个空div,IE7中要上下加两个空div之后再给外部div加border-->
+<div id="box" style="background-color: pink;border: 1px solid">
+    <div style="height: 0;overflow: hidden"></div>
+    <p style="margin-top: 20px;margin-bottom: 20px; text-align:center;">p对象中的内容</p>
+    <div style="height: 0;overflow: hidden"></div>
+</div>
+
+<div style="width:400px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    overflow: hidden;">准中定义id与class有什么区别吗 一.web标准中是不容许重复ID的,比如 div id="aa"   不容许重复2次,而class 定义的是类,理论上可以无限重复, 这样需要多次引用的定义便可以使用他. 二.属性的优先级问题 ID 的优先级要高于class,看上面的例子 三.方便JS等客户端脚本,如果在页面中要对某个对象进行脚本操作,那么可以给他定义一个ID,否则只能利用遍历页面元素加上指定特定属性来找到它,这是相对浪费时间资源,远远不如一个ID来得简单.</div>
+
+<div style="position:absolute;
+      top:50%;
+      lef:50%;
+      margin:-50px 0 0 -50px;
+      width:100px;
+      height:100px;
+      border:10px solid red;">sssss</div>
+
+<!--pointer ff和ie都可以，hand只有ie可以-->
+<a style="cursor: pointer">不同浏览器下的手指</a>
+
+<div onclick="alert(this.offsetWidth)" style="cursor:pointer;width:200px;height:200px;border:10px solid red">容器宽度</div>
+
+<div style="vertical-align: middle;height: 200px;line-height: 200px">div垂直居中</div>
+
+<div style="float:left; width:100px; margin:0 0 0 100px;border: 1px solid;display:inline;">浮动距离</div>
+
+<div class="clearfix">闭合的float</div>
+
+<div class="content">
+    <div class="leftBox"></div>
+    <div class="middleBox"></div>
+    <div class="rightBox"></div>
+</div>
+
+</div>
+
+<div style="width: 100%;">
+    <label style="width: 10%;float: left;">a:</label>
+    <select style="float: left;">
+        <option>a1</option>
+        <option>a2</option>
+        <option>a3</option>
+    </select>
+</div>
+<div style="width: 100%;clear: left">
+    <label style="width: 10%;float: left;">bbbbb:</label>
+    <select style="float: left;">
+        <option>b1</option>
+        <option>b2</option>
+        <option>b3</option>
+    </select>
+</div>
+
+<!--单词被切断折行并且结尾用中划线-连接-->
+<style>
+    #test1 {
+        clear: both;
+        width: 50%;
+        text-align: justify;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+    }
+</style>
+<div id="test1" lang="en">
+    For example, if you are designing a brand new website for someone, most times you will have to make sure the prototype looks finished by inserting text or photos or what have you. The purpose of this is so the person viewing the prototype has a chance to actually feel and understand the idea behind what you have created.
+</div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular-animate.min.js"></script>
+    <script src="angularJsTest.js"></script>
+    <script src="angularControllerTest.js"></script>
+    <script src="angularFilterTest.js"></script>
+    <script src="angularServiceTest.js"></script>
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl" ng-init="a=2;b=3;c='hello world';person={name:'cherry',age:21};arr=[11,22,33,44];arrPerson=[{name:'Jani',country:'Norway'},{name:'Hege',country:'Sweden'},{name:'Kai',country:'Denmark'}]">
+    <p>名字 : <input type="text" ng-model="name"></p><!--ng-model 指令把元素值（比如输入域的值）绑定到应用程序 -->
+    <h1>Hello {{name}}</h1>
+    <h1>Hello <span ng-bind="name"></span></h1><!--ng-bing和{{}}表达式都可以数据绑定-->
+    <h5>算个数吧 5+5={{5+5}}</h5>
+    <h5>算个数吧（初始化的数字） a*b={{a*b}}</h5>
+    <h5>初始化的字符串 c={{c}}</h5>
+    <h5>初始化的对象 person=name:{{person.name}},age:{{person.age}}</h5>
+    <h5>初始化的数组 arr的第二个值是{{arr[1]}}</h5>
+    输入a:<input type="number" ng-model="a">
+    输入b:<input type="number" ng-model="b">
+    a*b 结果为 ：{{a*b}}
+
+    <h5>下面循环数组arr:</h5>
+    <ul>
+        <li ng-repeat="x in arr">
+            {{x}}
+        </li>
+    </ul>
+
+    <h5>下面循环对象数组arrPerson:</h5>
+    <ul>
+        <li ng-repeat="x in arrPerson">
+            {{ x.name + ', ' + x.country }}</li>
+    </ul>
+
+    <h5>自定义指令的几种使用方式：
+        元素名 restrict: 'E'
+        属性 restrict: 'A'
+        类名 restrict: 'C'
+        注释 restrict: 'M'
+        默认值为 EA, 即可以通过元素名和属性名来调用指令
+    </h5>
+    <runoob-directive></runoob-directive>
+    <div runoob-directive></div>
+    <div class="runoob-directive"></div>
+    <!-- 指令: runoob-directive -->
+
+    <h5>来自controller的数组arr2：</h5> <!-- 注意 $rootScope 在循环对象内外都可以访问。-->
+    rootScope的age：{{age}}
+    <ul>
+        <li ng-repeat="x in arr2">{{x + ' : ' + age}}
+    </ul>
+
+    <h5>name和age在controller里组合：{{nameAge()}}</h5>
+
+    <h5>过滤器：大写  {{name | uppercase}}</h5>
+    <h5>过滤器：小写  {{name | lowercase}}</h5>
+    <h5>过滤器：货币格式  {{a*b | currency}}{{a*b | currency:'￥'}}</h5>
+    <h5>过滤器：number  {{a*b | number:2}}</h5><!-- number过滤器将数字格式化成文本，它的参数是可选的，用来控制小数点后的截取位数。如果传入的是一个非数字字符，会返回空字符串-->
+    <h5>过滤器：json  {{arrPerson | json}}</h5> <!--json过滤器可以将一个JSON或者JavaScript对象转换成字符串。 -->
+    <h5>过滤器：date  {{today | date: "yyyy - MM - dd HH:mm:ss"}}</h5>
+    <h5>过滤器：orderBy 过滤输入：filter</h5>
+    <input type="text" ng-model="test"></p>
+    <ul>
+        <li ng-repeat="x in arrPerson | filter:test | orderBy:'country':true">{{x.name + '.' + x.country}} <!--orderBy:'country':true降序 orderBy:'country'升序 -->
+    </ul>
+    <h5>过滤器：limitTo:{{ "i love tank" | limitTo:6 }}--{{ "i love tank" | limitTo:-4 }}--{{ [{"age": 20,"id": 10,"name": "iphone"},{"age": 12,"id": 11,"name": "sunm xing"},{"age": 44,"id": 12,"name": "test abc"}] | limitTo:1 }}</h5>
+    <h5>自定义过滤器： {{"i love tank" | myFilter}}</h5>
+
+    <h5>显示当前页面URL：{{myUrl}}</h5>
+
+    <h5>2秒后显示：{{myTimeOut}}</h5>
+    <h5>每秒显示：{{myInterval}}</h5>
+
+    <h5>255的十六进制：{{hex}}</h5>
+    <h5>255的十六进制(service在filter中)：{{255|myFilterHexafy}}</h5>
+
+    <h5>http post返回的数据</h5>
+    <ul>
+        <li ng-repeat="dsp in dsps">{{dsp.x + '  ' + dsp.y}}</li>
+    </ul>
+
+    <select  ng-model="selectedArr" ng-options="x.name for x in arrPerson"></select>
+    <h5>选择的是：{{selectedArr.name}} 国家是：{{selectedArr.country}} </h5>
+    <select ng-model="selectedArr2">
+        <option ng-repeat="x in arr" value="{{x}}">{{x}}</option>
+    </select>
+    <h5>选择的是：{{selectedArr2}}</h5>
+    <select ng-model="selectedArr3" ng-options="x for (x,y) in person"></select> <!--使用对象作为数据源, x 为键(key), y 为值(value),你选择的值为在 key-value 对中的 value。-->
+    <h5>选择的是：{{selectedArr3}}</h5>
+
+    <table>
+        <tr ng-repeat="x in arrPerson">
+            <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.name }}</td>
+            <td ng-if="$even">{{ x.name }}</td>
+            <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.country }}</td>
+            <td ng-if="$even">{{ x.country }}</td>
+        </tr>
+    </table>
+
+    <p>
+        <button ng-disabled="mySwitch">点我</button>
+    </p>
+    <p>
+        <input type="checkbox" ng-model="mySwitch">按钮
+    </p>
+    <h5>{{mySwitch}}</h5>
+
+    <h5 ng-show="true">我是可见的ng-show="true"</h5>
+    <h5 ng-show="false">我是不可见的ng-show="false"</h5>
+    <h5 ng-show="hour > 12">我是可见的ng-show="hour > 12"</h5>
+
+    <h5 ng-hide="false">我是可见的ng-hide="false"</h5>
+    <h5 ng-hide="true">我是不可见的ng-hide="true"</h5>
+    <h5 ng-hide="hour < 12">我是可见的ng-hide="hour < 12"</h5>
+
+    <button ng-click="hour=hour+1">点我！</button>
+    <h5>{{hour}}</h5>
+
+    <button ng-click="hideShow()">手动控制显示隐藏</button>
+    <h5 ng-hide="hideVar">啦啦啦啦看见我啦</h5>
+
+    <br>------------------------------------------------
+    <form name="form1" novalidate>
+        <p>用户名：</p>
+        <input type="text" name="name" ng-model="name" required>
+        <span style="color: red" ng-show="form1.name.$dirty && form1.name.$invalid">
+            <span ng-show="form1.name.$error.required">用户名必填</span>
+        </span>
+        <p>邮箱：</p>
+        <input type="email" name="email" ng-model="email" required>
+        <span style="color: red" ng-show="form1.email.$dirty && form1.email.$invalid">
+            <span ng-show="form1.email.$error.required">邮箱必填</span>
+            <span ng-show="form1.email.$error.email">邮箱非法</span>
+        </span>
+        <p>
+            <input type="submit" ng-disabled="(form1.name.$dirty && form1.name.$invalid)||(form1.email.$dirty && form1.email.$invalid)">
+        </p>
+    </form>
+    ------------------------------------------------
+
+    <p>
+        <h5>x1:{{x1}}</h5>
+        <h5>x11:{{x11}}</h5>
+        <h5>x2:{{x2}}</h5>
+        <h5>x22:{{x22}}</h5>
+        <h5>x3:{{x3}}</h5>
+        <h5>x33:{{x33}}</h5>
+        <h5>x4:{{x4}}</h5>
+        <h5>x44:{{x44}}</h5>
+    </p>
+
+    <style>
+        .donghua {
+            transition: all linear 0.5s;
+            background-color: lightblue;
+            height: 100px;
+            width: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .ng-hide {
+            height: 0;
+            width: 0;
+            background-color: transparent;
+            top:-200px;
+            left: 200px;
+        }
+
+    </style>
+    <h5>1、动画隐藏DIV：<input type="checkbox" ng-model="myCheck"></h5> <!-- 要有 angular.module("myApp",["ngAnimate"]);-->
+    <div class="donghua" ng-hide="myCheck"></div>
+
+    <style>
+        @keyframes myChange {
+            from {
+                height: 100px;
+            } to {
+                height: 0px;
+           }
+        }
+        .donghua2 {
+            transition: all linear 0.5s;
+            background-color: lightblue;
+            height: 100px;
+            width: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .ng-hide {
+            animation: 0.5s myChange;
+        }
+
+    </style>
+    <h5>2、动画隐藏DIV：<input type="checkbox" ng-model="myCheck2"></h5> <!-- 要有 angular.module("myApp",["ngAnimate"]);-->
+    <div class="donghua2" ng-hide="myCheck2"></div>
+
+    <div style="background-color: coral">
+        <h5>我的笔记:</h5>
+        <p><textarea ng-model="message" cols="40" rows="10"></textarea></p>
+        <p>
+            <button ng-click="save()">保存</button>
+            <button ng-click="clear()">清除</button>
+        </p>
+        <p>剩余字数<span ng-bind="left()"></span></p>
+    </div>
+</div>
+<form name="myForm" id="myForm">
+    <style>
+        input.ng-invalid {
+            background-color: lightblue;
+        }
+    </style>
+    ***********************
+    Email:<input type="email" name="myEmail" ng-model="text" required>
+    <span ng-show="myForm.myEmail.$error.email">邮箱地址不合法</span>
+    <h2>状态</h2>
+    <p>Valid: {{myForm.myEmail.$valid}} (如果输入的值是合法的则为 true)。</p>
+    <p>Dirty: {{myForm.myEmail.$dirty}} (如果值改变则为 true)。</p>
+    <p>Touched: {{myForm.myEmail.$touched}} (如果通过触屏点击则为 true)。</p>
+    <h5>
+        ng-model 指令根据表单域的状态添加/移除以下类：
+        ng-empty
+        ng-not-empty
+        ng-touched
+        ng-untouched
+        ng-valid
+        ng-invalid
+        ng-dirty
+        ng-pending
+        ng-pristine
+
+        $dirty 	表单有填写记录
+        $valid 	字段内容合法的
+        $invalid 	字段内容是非法的
+        $pristine 	表单没有填写记录
+    </h5>
+    ***********************
+</form>
+</body>
+</html>
