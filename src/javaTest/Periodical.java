@@ -1,4 +1,4 @@
-package java;
+package javaTest;
 
 /**
  * Created with IntelliJ IDEA.
@@ -7,13 +7,13 @@ package java;
  * Time: 下午2:53
  * To change this template use File | Settings | File Templates.
  */
-public class NewsPaper implements Books {
-    public NewsPaper() {
+public class Periodical implements Books {
+    public Periodical() {
         addBook();
     }
 
     public String addBook() {
-        String str = "---addNewsPaper---";
+        String str = "---addPeriodical---";
         System.out.println(str);
         return str;
     }
