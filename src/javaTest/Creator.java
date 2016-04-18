@@ -3,7 +3,12 @@ package javaTest;
 import java.io.*;
 import java.math.BigDecimal;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -289,8 +294,45 @@ public class Creator {
 //            System.out.println(key.toString() + ": " + value.toString() + " keyHashCode: " + key.hashCode());
 //        }
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println(sdf.parse("2016-05-01"));
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//        System.out.println(sdf.parse("2016-05-01"));
+
+//        通配符替换
+//        String a = "${acc_nbr}ddd${acc_nbr}adjfs${cust_name}";
+//        String[] arr = a.split("$");
+//        Pattern p = Pattern.compile("$");
+//        Matcher m = p.matcher(a);
+//        System.out.println(m.matches());
+//        System.out.println(arr.length);
+//        System.out.println(a.contains("${"));
+//
+//        if (a.contains("${")) {
+//            char[] contentArr = a.toCharArray();
+//            List<String> columNames = new ArrayList<>();
+//            StringBuffer columName = new StringBuffer();
+//            for (int i = 0; i< contentArr.length; i++) {
+//                char contentChar = contentArr[i];
+//                if (contentChar=='$' && contentArr[i+1] == '{') {
+//                    i = i+2;
+//                    while (contentArr[i] != '}') {
+//                        columName.append(contentArr[i]);
+//                        i++;
+//                    }
+//                    columNames.add(columName.toString());
+//                    columName = new StringBuffer();
+//                }
+//            }
+//            for (String test : columNames) {
+//                System.out.println("---"+test);
+//                a = a.replace("${" + test + "}", "cherry");
+//            }
+//            System.out.println(a);
+//        }
+        Integer a = 8;
+        Integer b = 3;
+        Double c = ((double) a)/b;
+        DecimalFormat dff = new DecimalFormat("0.00");
+        System.out.println(dff.format(c));
     }
 
 

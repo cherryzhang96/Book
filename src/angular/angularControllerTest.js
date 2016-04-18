@@ -2,7 +2,7 @@
  * Created by cherryzhang on 2016/2/22.
  */
 angular.module("myCtrlTest", []).controller("myCtrl", function ($scope, $rootScope, $location, $timeout,
-                                                                $interval, hexafy, $http) {
+                                                                $interval, hexafy, $http, $parse, $interpolate) {
     $scope.name = 'cherry';
     $scope.arr2 = ["Emil", "Linus", "Tobias"];
     $rootScope.age = 21;
@@ -77,4 +77,24 @@ angular.module("myCtrlTest", []).controller("myCtrl", function ($scope, $rootSco
     $scope.left = function() {
         return 100 - $scope.message.length;
     }
+
+    $scope.$watch('expr', function(newVal, oldVal, scope) {
+        if (newVal !== oldVal) {
+            // Let's set up our parseFun with the expression
+            var parseFun = $parse(newVal);
+            // Get the value of the parsed expression, set it on the scope for output
+            scope.parsedExpr = parseFun(scope);
+        }
+    });
+
+    $scope.to = 'ari@fullstack.io';
+    $scope.emailBody = 'Hello {{ to }},\n\nMy name is Ari too!';
+    // Set up a watch
+    $scope.$watch('emailBody', function(body) {
+        if (body) {
+            var template = $interpolate(body);
+            $scope.previewText =
+                template({to: $scope.to});
+        }
+    });
 })
