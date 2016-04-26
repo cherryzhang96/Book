@@ -9,5 +9,9 @@ angular.module("myFilterTest",[]).filter("myFilter", function() {
     return function(x) {
         return hexafy.myFunc(x);
     };
-}])
+}]).filter("myFilter2", function() {
+    return function (input) {
+        return input[0].toUpperCase() + input.slice(1);
+    }
+})
 

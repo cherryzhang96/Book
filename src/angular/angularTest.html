@@ -69,7 +69,8 @@
         <li ng-repeat="x in arrPerson | filter:test | orderBy:'country':true">{{x.name + '.' + x.country}} <!--orderBy:'country':true降序 orderBy:'country'升序 -->
     </ul>
     <h5>过滤器：limitTo:{{ "i love tank" | limitTo:6 }}--{{ "i love tank" | limitTo:-4 }}--{{ [{"age": 20,"id": 10,"name": "iphone"},{"age": 12,"id": 11,"name": "sunm xing"},{"age": 44,"id": 12,"name": "test abc"}] | limitTo:1 }}</h5>
-    <h5>自定义过滤器： {{"i love tank" | myFilter}}</h5>
+    <h5>自定义过滤器（替换）： {{"i love tank" | myFilter}}</h5>
+    <h5>自定义过滤器（首字母大写，其余小写）： {{"china" | lowercase | myFilter2}}</h5>
 
     <h5>显示当前页面URL：{{myUrl}}</h5>
 

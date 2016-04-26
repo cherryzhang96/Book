@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -328,11 +329,26 @@ public class Creator {
 //            }
 //            System.out.println(a);
 //        }
-        Integer a = 8;
-        Integer b = 3;
-        Double c = ((double) a)/b;
-        DecimalFormat dff = new DecimalFormat("0.00");
-        System.out.println(dff.format(c));
+//        Integer a = 8;
+//        Integer b = 3;
+//        Double c = ((double) a)/b;
+//        DecimalFormat dff = new DecimalFormat("0.00");
+//        System.out.println(dff.format(c));
+
+//        for (int i = 0; i < 460022 ; i++) {
+//            Integer a = 8;
+//            Integer b = 3;
+//            Double c = ((double) a)/b;
+//            DecimalFormat dff = new DecimalFormat("0.00");
+////            if (i==0 || i==460021) {
+////                System.out.println(new Date());
+////            }
+//            System.out.println(new Date());
+//        }
+
+        Integer jobFlag = -127;
+        Integer salesFlag = -127;
+        System.out.println(jobFlag==salesFlag);
     }
 
 
