@@ -116,7 +116,9 @@ window.onload = function () {
 
     //nullEqual();
 
-    numTest();
+    //numTest();
+
+    jsonTest();
 }
 
 
@@ -838,4 +840,14 @@ function numTest() {
     alert(num);
     var num=100;
     alert(num);
+}
+
+function jsonTest() {
+    var j = jQuery.parseJSON('{"aKey":"a","bKey":"b"}');//json字符串转json对象方法1
+    alert(j.aKey);
+    var j2 = eval('('+'{"aKey":"a","bKey":"b"}'+')');//json字符串转json对象方法2
+    alert(j2.bKey);
+    var j3 = {"aKey":"a","bKey":"b"};//直接json对象
+    alert(j3.aKey);
+    alert(JSON.stringify(j3));//json对象转Json字符串
 }

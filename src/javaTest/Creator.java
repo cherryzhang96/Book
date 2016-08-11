@@ -1,13 +1,15 @@
 package javaTest;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.io.*;
 import java.math.BigDecimal;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
@@ -346,9 +348,26 @@ public class Creator {
 //            System.out.println(new Date());
 //        }
 
-        Integer jobFlag = -127;
-        Integer salesFlag = -127;
-        System.out.println(jobFlag==salesFlag);
+//        Integer jobFlag = -127;
+//        Integer salesFlag = -127;
+//        System.out.println(jobFlag==salesFlag);
+
+//        Calendar c2 = Calendar.getInstance();
+//        c2.set(Calendar.HOUR_OF_DAY,23);
+//        c2.set(Calendar.MINUTE,59);
+//        c2.set(Calendar.SECOND,59);
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+////        System.out.println(sdf.format(c2.getTime()));
+//        System.out.println(c2.getTimeInMillis());
+
+//        String lowerCode = "abcde";
+//        System.out.println(lowerCode.substring(0,2));
+//        System.out.println(lowerCode.substring(2, lowerCode.length()));
+
+        long a = 1466997669522L;
+        Long b = 1466997668595L;
+        Long c = 86400000L;
+        System.out.println(a-b<c);
     }
 
 
