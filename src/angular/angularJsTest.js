@@ -9,6 +9,8 @@ app.directive("runoobDirective", function(){
     };
 });
 var app2 = angular.module("myApp2",[]); //创建myApp2
+var app3 = angular.module("myApp3",[]); //创建myApp3
 angular.element(document).ready(function() {
     angular.bootstrap(document.getElementById("myForm"),["myApp2"]); //多个ng-app时默认加载第一个，其余的得手动启动
+    angular.bootstrap(document.getElementById("myScope"),["myApp3"]); //多个ng-app时默认加载第一个，其余的得手动启动
 })

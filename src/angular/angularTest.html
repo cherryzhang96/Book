@@ -44,10 +44,10 @@
         注释 restrict: 'M'
         默认值为 EA, 即可以通过元素名和属性名来调用指令
     </h5>
-    <runoob-directive></runoob-directive>
-    <div runoob-directive></div>
-    <div class="runoob-directive"></div>
-    <!-- 指令: runoob-directive -->
+    <runoob-directive>1</runoob-directive>
+    <div runoob-directive>2</div>
+    <div class="runoob-directive">3</div>
+    <!--directive: runoob-directive-->
 
     <h5>来自controller的数组arr2：</h5> <!-- 注意 $rootScope 在循环对象内外都可以访问。-->
     rootScope的age：{{age}}
@@ -253,5 +253,23 @@
     </h5>
     ***********************
 </form>
+
+<div ng-app="myScope" id="myScope">
+    <p>作用域相关：</p>
+    <p>We can access: {{ rootProperty }}</p>
+    <div ng-controller="ParentController">
+        <p>We can access: {{ rootProperty }}
+            and {{ parentProperty }}</p>
+        <div ng-controller="ChildController">
+            <p>
+                We can access:
+                {{ rootProperty }} and
+                {{ parentProperty }} and
+                {{ childProperty }}
+            </p>
+            <p>{{ fullSentenceFromChild }}</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
