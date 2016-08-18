@@ -116,4 +116,28 @@ angular.module('myApp3', [])
             $scope.rootProperty + ' and ' +
             $scope.parentProperty + ' and ' +
             $scope.childProperty
+    })
+    .directive('geliDirective', function() { //隔离作用域
+        return {
+            restrict: 'A',
+            replace: true,
+            scope: {
+                geliUrl: '@', //绑定策略
+                geliLinkText: '@' //绑定策略
+            },
+            template: '<a href="{{geliUrl}}">{{geliLinkText}}</a>'
+        };
+    })
+    .directive('geli2Directive', function() {//双向数据绑定
+        return {
+            restrict: 'A',
+            replace: true,
+            scope: {
+                geli2Url: '=someAttr', //绑定策略 不能用@策略，@得到的是dom属性值里的副本
+                geli2LinkText: '@' //绑定策略
+            },
+            template: ' <div><label>My Url Field:</label>' +
+            '<input type="text" ng-model="geli2Url" />' +
+            '<a href="{{geli2Url}}">{{geli2LinkText}}</a></div>'
+        }
     });

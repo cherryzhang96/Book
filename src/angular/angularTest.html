@@ -270,6 +270,19 @@
             <p>{{ fullSentenceFromChild }}</p>
         </div>
     </div>
+
+    <p>隔离作用域：</p>
+    <div geli-directive
+         geli-url="http://www.baidu.com"
+         geli-link-text="Click me to go to Baidu">
+    </div>
+
+    <p>双向数据绑定：</p>
+    <label>Their URL field:</label>
+    <input type="text" ng-model="theirUrl">
+    <div geli2-directive
+         some-attr="theirUrl"
+         geli2-link-text="Click me to go to Google"></div>
 </div>
 </body>
 </html>
