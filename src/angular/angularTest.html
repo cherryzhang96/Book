@@ -142,7 +142,9 @@
             <input type="submit" ng-disabled="(form1.name.$dirty && form1.name.$invalid)||(form1.email.$dirty && form1.email.$invalid)">
         </p>
     </form>
-    ------------------------------------------------
+    disabled的简单测试：<input type="text" ng-model="someProperty" placeholder="TypetoEnable">
+    <button ng-model="button" ng-disabled="!someProperty">AButton</button>
+    <br>------------------------------------------------<br>
 
     <p>
         <h5>x1:{{x1}}</h5>
@@ -220,6 +222,19 @@
     插值字符串:<input ng-model="to" type="email" placeholder="Recipient" />
     <textarea ng-model="emailBody"></textarea>
     <pre>{{ previewText }}</pre>
+
+    <p>ng-href angular会等到插值生效了再执行点击行为。href的话直接跳404(插值成功后链接才生效，才能点)</p>
+    <!-- 当 href 包含一个 {{expression}}时总是使用 ng-href -->
+    <a ng-href="{{ myHref }}">I'm feeling lucky, when I load</a>
+    <!-- 用户单击之前，href不会加载 -->
+    <a href="{{ myHref }}">I'm feeling 404</a>
+
+    <p>ng-src angular会告诉浏览器在ng-src对应的表达式生效之前不要加载图像</p>
+    <h1>WrongWay</h1>
+    <img src="{{imgSrc}}"/>
+    <h1>Rightway</h1>
+    <img ng-src="{{imgSrc}}"/>
+
 </div>
 <form name="myForm" id="myForm">
     <style>
@@ -282,7 +297,29 @@
     <input type="text" ng-model="theirUrl">
     <div geli2-directive
          some-attr="theirUrl"
-         geli2-link-text="Click me to go to Google"></div>
+         geli2-link-text="Click me to go to Google">
+    </div>
+
+
+    <p>控制域和子控制域:</p>
+    <div ng-controller="SomeController">
+        {{ someBareValue }}
+        <button ng-click="someAction()">Communicate to child</button>
+        <div ng-controller="ChildController">
+            {{ someBareValue }}
+            <button ng-click="childAction()">Communicate to parent</button>
+        </div>
+    </div>
+
+    <p>控制域和子控制域2(对象属性):</p>
+    <div ng-controller="SomeController2">
+        {{ someModel.someValue }}
+        <button ng-click="someAction()">Communicate to child</button>
+        <div ng-controller="ChildController2">
+            {{ someModel.someValue }}
+            <button ng-click="childAction()">Communicate to parent</button>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -97,6 +97,14 @@ angular.module("myCtrlTest", []).controller("myCtrl", function ($scope, $rootSco
                 template({to: $scope.to});
         }
     });
+
+    $timeout(function() {
+        $rootScope.myHref = 'http://www.baidu.com';
+    }, 2000);
+
+    $timeout(function() {
+        $rootScope.imgSrc = 'http://img10.360buyimg.com/imgzone/g13/M02/02/0C/rBEhVFM9IygIAAAAAAJXsJP3Z2sAALLgAM5cGQAAlfI313.jpg';
+    }, 2000);
 });
 
 angular.module('myApp3', [])
@@ -140,4 +148,29 @@ angular.module('myApp3', [])
             '<input type="text" ng-model="geli2Url" />' +
             '<a href="{{geli2Url}}">{{geli2LinkText}}</a></div>'
         }
+    })
+    .controller('SomeController', function($scope) {  //由于原型继承的关系，修改父级对象中的someBareValue会同时修改子对象中的值，但反之则不行。
+        $scope.someBareValue = "hello computer";
+        $scope.someAction = function() {
+            $scope.someBareValue = 'hello human, from parent';
+        }
+    })
+    .controller('ChildController', function($scope) {
+        $scope.childAction = function() {
+            $scope.someBareValue = 'hello human, from child';
+        };
+    })
+    .controller('SomeController2', function($scope) {
+        $scope.someModel = {
+            someValue:'hello computer'
+        };
+        $scope.someAction = function() {
+            $scope.someModel.someValue = 'hello human, from parent';
+        }
+    })
+    .controller('ChildController2', function($scope) {//JavaScript对象要么是值复制要么是引用复制。字符串、数字和布尔型变量是值复制。数组、对象和函数则是引用复制
+        //如果将模型对象的某个属性设置为字符串，它会通过引用进行共享，因此在子$scope中修改属性也会修改父$scope中的这个属性
+        $scope.childAction = function() {
+            $scope.someModel.someValue = 'hello human, from child';
+        };
     });
