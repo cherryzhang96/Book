@@ -235,6 +235,19 @@
     <h1>Rightway</h1>
     <img ng-src="{{imgSrc}}"/>
 
+    <p>ng-switch的使用:</p>
+    <input type="text" ng-model="per.name">
+    <div ng-switch on="per.name">
+        <p ng-switch-default>default</p>
+        <p ng-switch-when="cherry">{{per.name}}</p>
+    </div>
+
+    <p>ng-bind-template的使用：</p>
+    <div ng-bind-template="{{a}}{{b}}"></div>
+
+    <p>ng-change的使用：</p>
+    <input type="text" ng-model="equation.x" ng-change="change()" />
+    <code>{{ equation.output }}</code>
 </div>
 <form name="myForm" id="myForm">
     <style>

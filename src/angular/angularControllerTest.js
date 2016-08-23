@@ -105,6 +105,11 @@ angular.module("myCtrlTest", []).controller("myCtrl", function ($scope, $rootSco
     $timeout(function() {
         $rootScope.imgSrc = 'http://img10.360buyimg.com/imgzone/g13/M02/02/0C/rBEhVFM9IygIAAAAAAJXsJP3Z2sAALLgAM5cGQAAlfI313.jpg';
     }, 2000);
+
+    $scope.equation = {};
+    $scope.change = function() {
+        $scope.equation.output = parseInt($scope.equation.x) + 2;
+    }
 });
 
 angular.module('myApp3', [])
