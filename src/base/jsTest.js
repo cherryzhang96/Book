@@ -118,7 +118,15 @@ window.onload = function () {
 
     //numTest();
 
-    jsonTest();
+    //jsonTest();
+
+    //flowMsg();
+
+    //jsonUnicode();
+
+    //alert(unixTime2Date(1478184946, true));
+
+    changeP();
 }
 
 
@@ -850,4 +858,63 @@ function jsonTest() {
     var j3 = {"aKey":"a","bKey":"b"};//直接json对象
     alert(j3.aKey);
     alert(JSON.stringify(j3));//json对象转Json字符串
+}
+
+function flowMsg(){
+    var url="https://sp0.baidu.com/9_Q4sjW91Qh3otqbppnN2DJv/pae/channel/data/asyncqury?cb=s_callback&appid=4001&com=shunfeng&nu=150459090273&vcode=&token=&_=1478495920104";
+    $.ajax({
+        url:url,
+        type:"get",
+        dataType:"jsonp",
+        jsonp:"s_callback",
+        success:function(data){
+            alert(JSON.stringify(data));
+        },
+        error:function(){
+            alert("error");
+        }
+    })
+
+}
+
+function s_callback(obj){
+    if (obj==""||obj==null||obj==undefined) {
+        console.log("物流信息返回空")
+    }else{
+        alert("----"+JSON.stringify(obj));
+    }
+}
+
+function jsonUnicode() {
+    var a = '{"message":"记录成功！","status":1,"code":1,"logistics":"{\"msg\":\"\",\"status\":\"0\",\"error_code\":\"0\",\"data\":{\"info\":{\"status\":\"1\",\"com\":\"shunfeng\",\"state\":\"3\",\"context\":[{\"time\":\"1478306865\",\"desc\":\"\\u5df2\\u7b7e\\u6536,\\u611f\\u8c22\\u4f7f\\u7528\\u987a\\u4e30,\\u671f\\u5f85\\u518d\\u6b21\\u4e3a\\u60a8\\u670d\\u52a1\"},{\"time\":\"1478304563\",\"desc\":\"\\u5feb\\u4ef6\\u4ea4\\u7ed9\\u5468\\u632f\\u4e91\\uff0c\\u6b63\\u5728\\u6d3e\\u9001\\u9014\\u4e2d\\uff08\\u8054\\u7cfb\\u7535\\u8bdd\\uff1a18536891936\\uff09\"},{\"time\":\"1478304563\",\"desc\":\"\\u5feb\\u4ef6\\u5230\\u8fbe \\u3010\\u592a\\u539f\\u5e02\\u5c0f\\u5e97\\u533a\\u534e\\u5e9c\\u8425\\u4e1a\\u70b9\\u3011\"},{\"time\":\"1478280301\",\"desc\":\"\\u5feb\\u4ef6\\u5728\\u3010\\u592a\\u539f\\u5c0f\\u5e97\\u96c6\\u6563\\u4e2d\\u5fc3\\u3011\\u5df2\\u88c5\\u8f66\\uff0c\\u51c6\\u5907\\u53d1\\u5f80 \\u3010\\u592a\\u539f\\u5e02\\u5c0f\\u5e97\\u533a\\u534e\\u5e9c\\u8425\\u4e1a\\u70b9\\u3011\"},{\"time\":\"1478261758\",\"desc\":\"\\u5feb\\u4ef6\\u5230\\u8fbe \\u3010\\u592a\\u539f\\u5c0f\\u5e97\\u96c6\\u6563\\u4e2d\\u5fc3\\u3011\"},{\"time\":\"1478184946\",\"desc\":\"\\u5feb\\u4ef6\\u5728\\u3010\\u5317\\u4eac\\u9996\\u90fd\\u673a\\u573a\\u96c6\\u6563\\u4e2d\\u5fc32\\u3011\\u5df2\\u88c5\\u8f66\\uff0c\\u51c6\\u5907\\u53d1\\u5f80 \\u3010\\u592a\\u539f\\u5c0f\\u5e97\\u96c6\\u6563\\u4e2d\\u5fc3\\u3011\"},{\"time\":\"1478181800\",\"desc\":\"\\u5feb\\u4ef6\\u5230\\u8fbe \\u3010\\u5317\\u4eac\\u9996\\u90fd\\u673a\\u573a\\u96c6\\u6563\\u4e2d\\u5fc32\\u3011\"},{\"time\":\"1478175926\",\"desc\":\"\\u5feb\\u4ef6\\u5728\\u3010\\u5317\\u4eac\\u6d77\\u6dc0\\u5317\\u7406\\u5de5\\u8425\\u4e1a\\u70b9\\u3011\\u5df2\\u88c5\\u8f66\\uff0c\\u51c6\\u5907\\u53d1\\u5f80 \\u3010\\u5317\\u4eac\\u9996\\u90fd\\u673a\\u573a\\u96c6\\u6563\\u4e2d\\u5fc32\\u3011\"},{\"time\":\"1478162638\",\"desc\":\"\\u987a\\u4e30\\u901f\\u8fd0 \\u5df2\\u6536\\u53d6\\u5feb\\u4ef6\"}],\"_source_com\":\"\"},\"com\":\"shunfeng\",\"company\":{\"url\":\"http:\\/\\/www.kuaidi100.com\\/all\\/sf.shtml?from=openv\",\"fullname\":\"\\u987a\\u4e30\\u901f\\u8fd0\",\"shortname\":\"\\u987a\\u4e30\",\"icon\":{\"id\":\"16\",\"smallurl\":\"https:\\/\\/ss2.baidu.com\\/6ONYsjip0QIZ8tyhnq\\/it\\/u=1807529516,3291075151&fm=58\",\"smallpos\":\"0,32\",\"middleurl\":\"https:\\/\\/ss1.baidu.com\\/6ONXsjip0QIZ8tyhnq\\/it\\/u=1835223070,3312272045&fm=58\",\"middlepos\":\"0,180\",\"normal\":\"https:\\/\\/ss2.baidu.com\\/6ONYsjip0QIZ8tyhnq\\/it\\/u=3775999286,734565944&fm=58\"},\"icon249\":\"https:\\/\\/ss2.baidu.com\\/6ONYsjip0QIZ8tyhnq\\/it\\/u=659014994,2919842554&fm=58\",\"website\":{\"title\":\"www.sf-express.com\",\"url\":\"http:\\/\\/www.sf-express.com\"},\"tel\":\"95338\",\"auxiliary\":[{\"title\":\"\\u7f51\\u70b9\\u67e5\\u8be2\",\"url\":\"http:\\/\\/www.sf-express.com\\/cn\\/sc\\/dynamic_functions\\/store\\/?from=kuaidi100\"},{\"title\":\"\\u7f51\\u4e0a\\u5bc4\\u4ef6\",\"url\":\"http:\\/\\/www.sf-express.com\\/cn\\/sc\\/dynamic_functions\\/order\\/?from=kuaidi100\"}],\"timecost\":{\"btn_show\":\"1\",\"url\":\"http:\\/\\/www.sf-express.com\\/mobile\\/cn\\/sc\\/dynamic_functions\\/payFee\\/payFee.html\"},\"onlineorder\":{\"btn_show\":\"1\",\"url\":\"http:\\/\\/www.sf-express.com\\/mobile\\/cn\\/sc\\/dynamic_functions\\/ship\\/ship.html\"}},\"source\":{\"logo\":\"https:\\/\\/ss2.baidu.com\\/6ONYsjip0QIZ8tyhnq\\/it\\/u=1429564979,1787167512&fm=58\",\"title\":\"\\u6570\\u636e\\u6765\\u81ea\\u5feb\\u9012100\",\"url\":\"http:\\/\\/www.kuaidi100.com\\/?from=baidu_ala\",\"name\":\"\\u5feb\\u9012100\",\"showName\":\"\\u5feb\\u9012100\"},\"kuaidiSource\":{\"logo\":\"https:\\/\\/ss2.baidu.com\\/6ONYsjip0QIZ8tyhnq\\/it\\/u=1429564979,1787167512&fm=58\",\"title\":\"\\u6570\\u636e\\u6765\\u81ea\\u5feb\\u9012100\",\"url\":\"http:\\/\\/www.kuaidi100.com\\/?from=baidu_ala\",\"name\":\"\\u5feb\\u9012100\",\"showName\":\"\\u5feb\\u9012100\"}}}"}';
+    alert(JSON.stringify(a));
+}
+
+function unixTime2Date(unixTime, isFull, timeZone) {
+    if (typeof (timeZone) == 'number')
+    {
+        unixTime = parseInt(unixTime) + parseInt(timeZone) * 60 * 60;
+    }
+    var time = new Date(unixTime * 1000);
+    var ymdhis = "";
+    ymdhis += time.getUTCFullYear() + "-";
+    ymdhis += (time.getUTCMonth()+1) + "-";
+    ymdhis += time.getUTCDate();
+    if (isFull === true)
+    {
+        ymdhis += " " + time.getUTCHours() + ":";
+        ymdhis += time.getUTCMinutes() + ":";
+        ymdhis += time.getUTCSeconds();
+    }
+    return ymdhis;
+}
+
+function changeP() {
+    var arr = [1,2,3]
+    $.each(arr, function(i, item) {
+        if (i == 1) {
+            $(".b" + item).html("哈哈哈哈");
+        }
+    })
+
 }
