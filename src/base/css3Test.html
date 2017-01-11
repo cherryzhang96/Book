@@ -363,7 +363,9 @@
             }
         }
         /*响应式end*/
+
     </style>
+    <script src="../common/jquery.js"></script>
 </head>
 <body>
 <div>边框圆角、阴影、图片</div>
@@ -536,5 +538,36 @@
 <div id="test1" lang="en">
     For example, if you are designing a brand new website for someone, most times you will have to make sure the prototype looks finished by inserting text or photos or what have you. The purpose of this is so the person viewing the prototype has a chance to actually feel and understand the idea behind what you have created.
 </div>
+
+<style>
+    .triangle-up {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid black;
+        transition: transform 0.5s ease-out 0s;
+    }
+    .triangle-down {
+        transform: rotate(180deg);
+        transition: transform 0.5s ease-out 0s;
+        -moz-transform:rotate(180deg); /* Firefox 4 */
+        -webkit-transform:rotate(180deg); /* Safari and Chrome */
+        -o-transform:rotate(180deg); /* Opera */
+    }
+</style>
+<div class="triangle-up"></div>
+<script>
+    $(function(){
+        $(".triangle-up").click(function(){
+            if ($(".triangle-up").hasClass("triangle-down")){ //下->上
+                $(".triangle-up").removeClass("triangle-down");
+            } else {//上->下
+                $(".triangle-up").addClass("triangle-down");
+            }
+        });
+    })
+
+</script>
 </body>
 </html>

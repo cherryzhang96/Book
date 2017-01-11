@@ -126,7 +126,11 @@ window.onload = function () {
 
     //alert(unixTime2Date(1478184946, true));
 
-    changeP();
+    //changeP();
+
+    //madeJson();
+
+    splitStr();
 }
 
 
@@ -917,4 +921,29 @@ function changeP() {
         }
     })
 
+}
+
+function madeJson() {
+    var package = {
+        "56": "国内分钟数100分钟，国内流量500MB",
+        "76": "国内分钟数200分钟，国内流量800MB",
+        "106": "国内分钟数300分钟，国内流量1G",
+        "136": "国内分钟数500分钟，国内流量1G",
+        "166": "国内分钟数500分钟，国内流量2G",
+        "196": "国内分钟数500分钟，国内流量3G",
+        "296": "国内分钟数1000分钟，国内流量4G",
+        "396": "国内分钟数2000分钟，国内流量6G",
+        "596": "国内分钟数3000分钟，国内流量11G"
+    };
+    var num = "76";
+    alert(package[num]);
+}
+
+function splitStr() {
+    var str = 'http://sd4g.cn/active/images/terminal/3000/oppoR9Plus/0.jpg;http://sd4g.cn/active/images/terminal/3000/oppoR9Plus/1.jpg;http://sd4g.cn/active/images/terminal/3000/oppoR9Plus/2.jpg;http://sd4g.cn/active/images/terminal/3000/oppoR9Plus/3.jpg;';
+    var arr = str.split(";");
+    $.each(arr, function(i,item){
+       alert(item);
+        console.log(item == "")
+    });
 }

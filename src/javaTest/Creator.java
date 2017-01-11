@@ -448,8 +448,90 @@ public class Creator {
 //        byte[] bt = jsonResult.getBytes("utf-8");
 //        String ret = new String(bt, "utf-8");
 //        System.out.println(ret);
-        JSONObject jsonObject=JSONObject.parseObject(jsonResult);
-        System.out.println(jsonObject.toJSONString());
+//        JSONObject jsonObject=JSONObject.parseObject(jsonResult);
+//        System.out.println(jsonObject.toJSONString());
+
+//        String sb = "jsapi_ticket=kgt8ON7yVITDhtdwci0qecxK0_f0BoFD1ygXBulWZD7oHiJ1PFS6xfGEKumCtf293-T8DsdX7zjAIwrc1fKzLg&noncestr=hbxmugnhogoen99ugtyzmt2jpq0gld1n&timestamp=1482468172&url=http://gz.mobicloud.com.cn/active/sellPhone/affirm_order2.html&";
+//        String result = sb.toString();
+//        result = result.substring(0, result.length());
+//        System.out.println(result);
+
+//        Random r = new Random();
+//        List<String> list = new ArrayList<>();
+//        list.add("a1");
+//        list.add("a2");
+//        list.add("a3");
+//        list.add("a4");
+//        list.add("a5");
+//        list.add("a6");
+//        list.add("a7");
+//        list.add("a8");
+//        list.add("a9");
+//        list.add("a10");
+////        list.get(r.nextInt(list.size()));
+//        JSONObject jsonObject = new JSONObject();
+//        while (jsonObject.size() < 5){
+//            String temp = list.get(r.nextInt(list.size()));
+//            if (!jsonObject.containsKey(temp)) {
+//                jsonObject.put(temp, temp);
+//            }
+//        }
+//        System.out.println(jsonObject);
+
+//        testArray2Set();
+
+//        Calendar c1 = Calendar.getInstance();
+//        c1.set(Calendar.MINUTE,1);
+//        Calendar c2 = Calendar.getInstance();
+//        c2.set(Calendar.MINUTE,6);
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        System.out.println(sdf.format(c1.getTime()));
+//        System.out.println(sdf.format(c2.getTime()));
+////        System.out.println(c2.getTimeInMillis());
+//        System.out.println(c1.getTimeInMillis() - c2.getTimeInMillis());
+//        Date date1 = new Date();
+//        Date date11 = sdf.parse(sdf.format(date1));
+//        System.out.println(date1.getTime());
+
+//        Long a = 140L;
+//        Long num50 = 0L;
+//        Long num30 = 0L;
+//        Long num10 = 0L;
+//        num50 = a/50;
+//        Long yu50 = a%50;
+//        if (0L != yu50) {
+//            num30 = yu50/30;
+//            Long yu30 = yu50%30;
+//            if (0L != yu30) {
+//                num10 = yu30/10;
+//            }
+//        }
+//        System.out.println(num50);
+//        System.out.println(num30);
+//        System.out.println(num10);
+
+//        Integer actFlow = 2 * 50;
+//        System.out.println(actFlow);
+
+//        String result = "1";
+//        boolean resultTag = false;
+//        System.out.println(result=="1");
+//        System.out.println(!resultTag);
+//        System.out.println(result=="1" && !resultTag);
+
+        int a = 7;
+        //判断是否为2的乘方,结果为0时为2的乘方。2的乘方的数字转化成二进制都是只有最高位为1，其减1后位数减少一位，并所有位都为1，所以按位与为0
+//        System.out.println(a&(a-1));
+        //判断一个数字转化成二进制后1的个数。右移，并与1按位与。
+        int num = 0;
+        a = Math.abs(a);
+        while (a != 0) {
+            if ((a&1)==1) {
+                num++;
+            }
+            a = a >> 1;
+        }
+        System.out.println(num);
     }
 
     public static String unescapeUnicode(String str){
@@ -461,8 +543,15 @@ public class Creator {
     }
 
 
+    private static void testArray2Set() {
 
+        String[] arr = {"AA","BB","DD","CC","BB"};
 
+        //数组-->Set
+        Set<String> set = new HashSet<String>(Arrays.asList(arr));
+        System.out.println(set);
+        System.out.println(set.contains("DD"));
+    }
 
 
 
