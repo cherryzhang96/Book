@@ -519,7 +519,7 @@ public class Creator {
 //        System.out.println(!resultTag);
 //        System.out.println(result=="1" && !resultTag);
 
-        int a = 7;
+//        int a = 7;
         //判断是否为2的乘方,结果为0时为2的乘方。2的乘方的数字转化成二进制都是只有最高位为1，其减1后位数减少一位，并所有位都为1，所以按位与为0
 //        System.out.println(a&(a-1));
         //判断一个数字转化成二进制后1的个数。右移，并与1按位与。
@@ -533,9 +533,10 @@ public class Creator {
 //        }
 //        System.out.println(num);
         //Integer.bitCount（）方法也可以
-    Integer b = 18;
-    System.out.println(b.bitCount(b));
-}
+//    Integer b = 18;
+//    System.out.println(b.bitCount(b));
+
+    }
 
     public static String unescapeUnicode(String str){
         StringBuffer b=new StringBuffer();

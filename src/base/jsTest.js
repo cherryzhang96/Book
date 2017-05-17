@@ -132,7 +132,10 @@ window.onload = function () {
 
     //splitStr();
 
-    timeoutTest(parseInt(60));
+    //timeoutTest(parseInt(60));
+    //urlTest();
+
+    objectTest();
 }
 
 
@@ -978,4 +981,14 @@ function timeoutTest(intDiff) {
 
 function t() {
     alert("哈哈");
+}
+
+function urlTest() {
+    alert(encodeURI("http://gz.mobicloud.com.cn/active/gzGame/img/wxred.jpg"));
+}
+
+function objectTest(){
+    var a = {"a":"aa","b":"bb"};
+    alert(a.a);
+    alert(a.A);
 }
